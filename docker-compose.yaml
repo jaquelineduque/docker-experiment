@@ -1,0 +1,22 @@
+version: '3'
+services:
+  teste-docker:
+    image: teste-docker
+    ports:
+     - 8080:8080
+    environment:
+      POSTGRES_DB: 'dbtest'
+      POSTGRES_USER: 'postgres'
+      POSTGRES_PASSWORD: password
+  db:
+    image: postgres:latest
+    ports:
+     - 5432:5432
+    volumes:
+    - db-data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_DB: 'dbtest'
+      POSTGRES_USER: 'postgres'
+      POSTGRES_PASSWORD: password
+volumes:
+    db-data:
